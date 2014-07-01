@@ -75,7 +75,7 @@ PRODUCT_PACKAGES := \
     lights.exynos4 \
     macloader \
     tinymix \
-    Torch  \   
+    Torch \
     SamsungServiceMode \
     DeviceSettings
 

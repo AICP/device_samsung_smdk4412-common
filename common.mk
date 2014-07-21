@@ -66,6 +66,7 @@ PRODUCT_PACKAGES := \
     audio.a2dp.default \
     audio.primary.smdk4x12 \
     audio.usb.default \
+    audio.r_submix.default \
     com.android.future.usb.accessory \
     gralloc.exynos4 \
     hwcomposer.exynos4 \

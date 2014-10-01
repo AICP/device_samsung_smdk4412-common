@@ -48,8 +48,8 @@
                 android:key="led_fade"
                 android:title="@string/led_fade_title_head"
                 android:summary="@string/led_fade_summary_head"
-                android:entries="@array/led_fade_entries"
-                android:entryValues="@array/led_fade_entries_values"
+                android:entries="@array/led_fade_style_entries"
+                android:entryValues="@array/led_fade_style_entries_values"
                 android:defaultValue="1" />
     </PreferenceCategory>
 

@@ -32,10 +32,40 @@ public class LedFade extends ListPreference implements OnPreferenceChangeListene
         this.setOnPreferenceChangeListener(this);
     }
 
-    private static final String FILE = "/sys/class/sec/led/led_fade";
+    private static final String FILE_FADE = "/sys/class/sec/led/led_fade";
+    private static final String FILE_SPEED= "/sys/class/sec/led/led_speed";
+
+    private static final String METHOD_BLINK = "0";
+    private static final String METHOD_FADE = "1";
+    private static final String METHOD_BLINKFAST = "2";
+    private static final String METHOD_FADEFAST = "3";
 
     public static boolean isSupported() {
-        return Utils.fileExists(FILE);
+        return Utils.fileExists(FILE_FADE) && Utils.fileExists(FILE_SPEED);
+    }
+
+private static void setSysFsForMethod(String method)
+    {
+        if (method.equals(METHOD_BLINK))
+        {
+             Utils.writeValue(FILE_FADE, "0\n");
+             Utils.writeValue(FILE_SPEED, "1\n");
+        } else
+        if (method.equals(METHOD_FADE))
+        {
+             Utils.writeValue(FILE_FADE, "1\n");
+             Utils.writeValue(FILE_SPEED, "1\n");
+        } else
+        if (method.equals(METHOD_BLINKFAST))
+        {
+             Utils.writeValue(FILE_FADE, "0\n");
+             Utils.writeValue(FILE_SPEED, "2\n");
+        } else
+        if (method.equals(METHOD_FADEFAST))
+        {
+             Utils.writeValue(FILE_FADE, "1\n");
+             Utils.writeValue(FILE_SPEED, "2\n");
+        }
     }
 
     /**
@@ -48,11 +78,11 @@ public class LedFade extends ListPreference implements OnPreferenceChangeListene
         }
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Utils.writeValue(FILE, sharedPrefs.getString(DeviceSettings.KEY_LED_FADE, "1"));
+        Utils.writeValue(FILE_FADE, sharedPrefs.getString(DeviceSettings.KEY_LED_FADE, "1"));
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        Utils.writeValue(FILE, (String) newValue);
+        Utils.writeValue(FILE_FADE, (String) newValue);
         return true;
     }
 

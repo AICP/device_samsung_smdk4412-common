@@ -38,7 +38,7 @@
     <!-- LED -->
     <string name="led_subcat_title">Notification LED</string>
     <string name="led_fade_title_head">LED Fading</string>
-    <string name="led_fade_summary_head">Enable LED smooth fading instead of sharp blinking.</string>
+    <string name="led_fade_summary_head">Adjust LED style and speed.</string>
 
     <!-- Touchkey tuning -->
     <string name="touchkey_subcat_title">Touchkeys</string>
